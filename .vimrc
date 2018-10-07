@@ -1,6 +1,6 @@
-"learning from https://www.cnblogs.com/stejovbes/p/7472184.html
+"learning from https://www.cnblogs.com/stejovbes/p/7472184.html and other csdn
 "source ~/.vimrc立即生效
-"去掉讨厌的有关vi一致性模式，避免以前版本的一些bug和局限"
+"必须
 set nocompatible
 "帮助
 set helplang=cn 
@@ -14,7 +14,7 @@ set backspace=indent,eol,start
 set whichwrap+=<,>,h,l
 "行号
 set number
-" 可以在buffer的任何地方使用鼠标（类似office中在工作区双击鼠标定位）"鼠标复制不方便  
+" 使用鼠标"鼠标复制不方便  
 ""set mouse=a  
 ""set selection=exclusive  
 ""set selectmode=mouse,key
@@ -28,7 +28,7 @@ set fencs=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936
 filetype on  
 " 检测文件类型插件  
 filetype plugin on 
-"打开文件类型检测, 加了这句才可以用智能补全
+"据说加了这句才可以用智能补全
 set completeopt=longest,menu
 "" replace tab with space  
 set expandtab  
@@ -42,10 +42,10 @@ set smarttab
 "突出当前行
 set cursorline
 "搜索
-" 搜索时忽略大小写，但在有一个或以上大写字母时仍大小写敏感  
+" 搜索时忽略大小写，有一个或以上大写字母时仍大小写敏感  
 set ignorecase  
 set smartcase  
-" " 搜索到文件两端时不重新搜索  
+" " 搜索到文件两端时重新搜索  
 set wrapscan  
 " " 实时搜索  
 set incsearch  
@@ -64,7 +64,7 @@ vnoremap <c-c> "+y
 nmap <silent> <C-v> "+p
 
 
-" 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存  
+"   
 set hidden  
 " " 智能自动缩进  
 set smartindent  
@@ -73,7 +73,7 @@ set cmdheight=1
 " " 显示状态栏 (默认值为 1, 无法显示状态栏)  
 set laststatus=2  
 "
-" 解决自动换行格式下, 如高度在折行之后超过窗口高度结果这一行看不到的问题  
+" 据说解决自动换行格式下, 如高度在折行之后超过窗口高度结果这一行看不到的问题  
 set display=lastline
 " 设置在状态行显示的信息  
 set statusline=%F%m%r%h%w%=\ [ft=%Y]\ %{\"[fenc=\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\"+\":\"\").\"]\"}\ [ff=%{&ff}]\ [asc=%03.3b]\ [hex=%02.2B]\ [pos=%04l,%04v][%p%%]\ [len=%L]
