@@ -61,7 +61,7 @@ nmap <silent> <C-a> ggvG$
 vnoremap <c-c> "+y  
 "     
 "     " Ctrl+v  
-nmap <silent> <C-v> "+p
+"nmap <silent> <C-v> "+p
 
 
 "   
