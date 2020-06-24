@@ -1,4 +1,4 @@
-"learning from https://www.cnblogs.com/stejovbes/p/7472184.html and other csdn
+
 "source ~/.vimrc立即生效
 "必须
 set nocompatible
@@ -122,9 +122,9 @@ endfunc
 """""新文件标题
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "新建.c,.h,.sh,.java文件，自动插入文件头 
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.py,*.go exec ":call SetTitle()" 
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java,*.py,*.go exec ":call SetTitles()" 
 """定义函数SetTitle，自动插入文件头 
-func SetTitle() 
+func! SetTitles() 
     "如果文件类型为.sh文件 
         if &filetype == 'python' 
                 call setline(1,"\#!usr/bin/env python") 
@@ -174,7 +174,9 @@ endfunction
 "python高亮全开
 let python_highlight_all=1
 call plug#begin()
-Plug 'maralla/completor.vim'
+"Plug 'maralla/completor.vim'python支持问题
+"补全
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'davidhalter/jedi-vim'
 Plug 'vim-syntastic/syntastic'
@@ -190,7 +192,11 @@ Plug 'honza/vim-snippets'
 Plug 'jiangmiao/auto-pairs'
 "多文件
 Plug 'fholgado/minibufexpl.vim'
+
+Plug 'fatih/vim-go'
+
 call plug#end()
+"let g:completor_min_chars=2
 "开启python自动补全
 "autocmd FileType python set omnifunc=python3complete#Complete
 ""filetype plugin on 
@@ -200,7 +206,7 @@ call plug#end()
 
 ""开启go自动补全
 let g:completor_gocode_binary = '/usr/local/go/bin/gocode'
-
+"let g:completor_python_binary = '/usr/bin/python3'
 ""目录树C+n,C+w+w切换窗口
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
@@ -252,8 +258,11 @@ let g:tagbar_type_go = {
     \ 'ctagsbin'  : 'gotags',
     \ 'ctagsargs' : '-sort -silent'
     \ }
-""ctags gd C+o
-""set tags=tags;
+""ctags gd C+o ,CTRL + ],CTRL + T
+set tags=tags;
+set tags+=~/.vim/tags/python.ctags
+set tags+=~/.vim/tags/python3.ctags
+set tags+=~/.vim/tags/golang.ctags
 set autochdir
 
 ""undo tree
@@ -262,7 +271,7 @@ if has("persistent_undo")
     set undodir=~/.undodir/
     set undofile
 endif
-"miniexplore
+"miniexplore bn,bp,bd,bw
 let g:miniBufExplMapWindowNavVim = 1 
 let g:miniBufExplMapWindowNavArrows = 1 
 let g:miniBufExplMapCTabSwitchBufs = 1 
